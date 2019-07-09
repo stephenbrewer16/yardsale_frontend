@@ -19,5 +19,29 @@ const mapWindow = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.
 
 
 //ADD MARKER
-var marker = L.marker([51.5, -0.09]).addTo(map);
+const pins = []
+
+
+function fetchPins() {
+    fetch('http://localhost:3000/api/v1/users')
+    .then(resp => resp.json())
+    .then(users => {
+        users.forEach(user => {
+            console.log(user)
+            pins.push(user.geolocation)
+        })
+    })
+    .then(renderPins)
+}
+
+fetchPins()
+
+function renderPins(){
+    pins.forEach(pin => {
+        L.marker(pin)
+            .bindPopup("Test")
+            .addTo(map)
+    })
+}
+
 
