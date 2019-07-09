@@ -160,9 +160,9 @@ inboxContainer.addEventListener('click', e =>{
       userMsg.forEach(msg => {
         inboxContainer.innerHTML = ''
         inboxContainer.innerHTML += `
-          
 
-        `
+
+        // `
       })
     }) // end of fetch Msgs
 
