@@ -6,11 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script type="text/javascript" src="source/index.js"></script> 
+    <link rel="stylesheet" type="text/css" href="source/css/stylesheet.css"/>
 </head>
 <body>
     <div id="user-info">
         <form id="user-form">
-            Name:<br>
+            Username:<br>
             <input type="text" name="name"><br>
             Location:<br>
             <input type="text" name="location"><br>
@@ -19,8 +20,26 @@
             <input type="submit" name="submit"><br>
         </form>
     </div>
-    <div id="itemDiv">
-        <button id="add-item">Add Item</button>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Search</a>
+        <a href="#">Browse</a>
+        <a id="sell" href="#">Sell Item</a>
+        <a href="#">View Map</a>
+        <a href="#">Notifications</a>
+        <a id="logout" href="#">Logout</a>
+    </div>    
+    <span id='menuButton' onclick='openNav()'>Menu</span>
+    
+    <div id="main">
     </div>
+    <div id="itemDiv">
+        
+    </div>
+
+    
+
+
 </body>
 </html>
