@@ -1,0 +1,81 @@
+#menuButton {
+    background-color: #2efdff;
+    box-shadow: 0 5px 0 #650000;
+    color: #650000;
+    padding: 1em 1.5em;
+    margin-left: 40px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+#menuButton:hover {
+    background-color: #079596;
+    cursor: pointer;
+}
+
+#menuButton:active {
+    box-shadow: none;
+    top: 5px;
+}
+
+
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #650000;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #2efdff;
+    display: block;
+    transition: 0.3s;
+}
+
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+#user-info {
+    text-align: center;
+    
+}
+#map {
+    height: 500px;
+    width: 900px;
+}

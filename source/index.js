@@ -171,12 +171,20 @@ inboxContainer.addEventListener('click', e =>{
 
 })// end of inbox listener
 
+    logout.addEventListener('click', e => {
+        if (e.target.innerText === 'Logout')
+        closeNav()
+        menuBtn.style.display = 'none'
+        userForm.style.display = 'block'
+        itemDiv.style.display = 'none'
+    })
+}) // end of DOM load
 
 
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
 
-
-
-
-
-
-})// end of DOM load
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    <link rel="stylesheet" href="source/css/index.css" />
+    <link rel="stylesheet" href="source/css/stylesheet.css" />
 
     <!-- Leaflet files -->
     <link rel="stylesheet" href="leaflet/leaflet.css" />
@@ -18,7 +18,7 @@
 <body>
     <div id="user-info">
         <form id="user-form">
-            Name:<br>
+            Username:<br>
             <input type="text" name="name"><br>
             Location:<br>
             <input type="text" name="location"><br>
@@ -27,22 +27,31 @@
             <input type="submit" name="submit"><br>
         </form>
     </div>
-    <div id="item-div">
-        <button id="add-item">Add Item</button>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Search</a>
+        <a href="#">Browse</a>
+        <a id="sell" href="#">Sell Item</a>
+        <a href="#">View Map</a>
+        <a href="#">Notifications</a>
+        <a id="logout" href="#">Logout</a>
+    </div>    
+    <span id='menuButton' onclick='openNav()'>Menu</span>
+    
+    <div id="main">
     </div>
-
-
-    <br>
-
-    <div id="map"></div>
-
-
+    <div id="itemDiv">
+        
+    </div>
+<div id="map"></div>
     <div id="message-div">
         <button id="message">Send Message</button>
     </div>
     <div id='inbox'>
-      <button id="message">Notifications</button>
+        <button id="message">Notifications</button>
     </div>
+
 
 </body>
 </html>
