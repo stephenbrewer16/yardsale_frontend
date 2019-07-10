@@ -85,20 +85,20 @@ document.addEventListener('DOMContentLoaded', () => {
         let userNum = itemForm[5].value
         console.log(title, description, photo, category, price, userNum)
         fetch(itemsUrl, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    title,
-                    description,
-                    photo,
-                    category,
-                    price,
-                    user_id: userNum
-                }) // end of body
-            }) // end of Fetch
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                title,
+                description,
+                photo,
+                category,
+                price,
+                user_id: userNum
+            }) // end of body
+        }) // end of Fetch
             .then(r => r.json())
             .then(newItem => {
                 console.log(newItem)
