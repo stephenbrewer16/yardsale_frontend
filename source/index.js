@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('menuButton')
     const map = document.getElementById('map')
     const logout = document.getElementById('logout')
+    const inbox = document.getElementById('inbox')
 
     ///local state///
     let userId = null
@@ -63,7 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
              Photo URL:
              <input type="text" name="photo" >
              Category:
-             <input type="text" name="category" >
+             <select name = "category" form = "item-info">
+                 <option value = "clothing" > Clothing </option> 
+                 <option value = "records" > Records </option> 
+                 <option value = "video games" > Video Games </option> 
+                 <option value = "books" > Books </option> 
+                 </select>
              Condition:
              <input type="text" name="condition" >
              Price:
@@ -74,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         `
         }
+        closeNav()
         itemDiv.style.display = 'block'
     }) //end itemDiv listener
 
@@ -110,9 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
             })
     }) // end of itemDiv event listener
 
-    messageDiv.addEventListener('click', e => {
+    inbox.addEventListener('click', e => {
         // console.log('click');
-        if (e.target.id === 'message')
+        if (e.target.id === 'messages')
 
             messageDiv.innerHTML = ''
         messageDiv.innerHTML = `
