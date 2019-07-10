@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let name = userForm[0].value
         let location = userForm[1].value
-        let email = userForm[2].value
 
         fetch(usersUrl, {
                 method: "POST",
@@ -35,18 +34,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({
                     name,
-                    location,
-                    email
+                    location
                 }) // end of body
             }) // end of Fetch
             .then(r => r.json())
             .then(newUser => {
-                userId = newUser.id
-                console.log('1', userId);
+                if (newUser.id) {
+                    userId = newUser.id
+                    menuBtn.style.display = 'block'
+                    userForm.style.display = 'none'
+                    map.style.display = 'block'
+                } 
             })
-        menuBtn.style.display = 'block'
-        userForm.style.display = 'none'
-        map.style.display = 'block'
     }) // end of userForm listener
 
     //begin itemDiv listener
@@ -64,8 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
              <input type="text" name="photo" >
              Category:
              <input type="text" name="category" >
-             Condition:
-             <input type="text" name="condition" >
              Price:
              <input type="text" name="price" >
              <input hidden type="text" value=${userId} >
@@ -84,10 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let description = itemForm[1].value
         let photo = itemForm[2].value
         let category = itemForm[3].value
-        let condition = itemForm[4].value
-        let price = itemForm[5].value
-        let userNum = itemForm[6].value
-        console.log(title, description, photo, category, condition, price, userNum)
+        let price = itemForm[4].value
+        let userNum = itemForm[5].value
+        console.log(title, description, photo, category, price, userNum)
         fetch(itemsUrl, {
                 method: "POST",
                 headers: {
@@ -99,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     description,
                     photo,
                     category,
-                    condition,
                     price,
                     user_id: userNum
                 }) // end of body
@@ -115,13 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.id === 'message')
 
             messageDiv.innerHTML = ''
-        messageDiv.innerHTML = `
-  <div id='message-info'>
-    <input id='msg-body' type='textarea' name='body'>
-    <input data-id=${userId} id='send' type='submit' name='send' value='send'>
-  </div>
+            messageDiv.innerHTML = `
+                <div id='message-info'>
+                    <input id='msg-body' type='textarea' name='body'>
+                    <input data-id=${userId} id='send' type='submit' name='send' value='send'>
+                </div>
 
-  `
+                `
 
         const messageInfo = document.querySelector('#message-info')
 

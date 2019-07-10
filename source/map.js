@@ -17,7 +17,6 @@ const mapWindow = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.
 //ADD MARKERS
 const userArray = []
 
-
 function fetchPins() {
     fetch('http://localhost:3000/api/v1/users')
     .then(resp => resp.json())
@@ -38,9 +37,13 @@ function renderPins() {
             user.items.forEach(item => {
                 userCaption += `${item.title} $${item.price} \n `
             })
-            L.marker(user.geolocation)
+            L.marker([user.lat, user.long])
             .bindPopup(userCaption)
             .addTo(map)
         }
     })
 }
+
+//ADD INDIVIDUAL MARKER
+
+
