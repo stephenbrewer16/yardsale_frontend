@@ -80,3 +80,6 @@
     width: 900px;
     margin-left: 250px;
 }
+#message-div {
+    text-align: center;
+}
