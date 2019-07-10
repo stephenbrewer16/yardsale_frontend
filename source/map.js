@@ -1,8 +1,4 @@
-console.log("hi")
-
-// const mapDiv = document.querySelector('#map')
-
-// mapDiv.innerHTML = `<div id="leafletmap"></div>`
+//INITIALIZE MAP
 
 const map = L.map('map').setView([40.7128, -74.0060], 13)
 
@@ -18,8 +14,8 @@ const mapWindow = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.
 
 
 
-//ADD MARKER
-const pins = []
+//ADD MARKERS
+const userArray = []
 
 
 function fetchPins() {
@@ -27,21 +23,24 @@ function fetchPins() {
     .then(resp => resp.json())
     .then(users => {
         users.forEach(user => {
-            console.log(user)
-            pins.push(user.geolocation)
+            userArray.push(user)
         })
     })
     .then(renderPins)
 }
-
 fetchPins()
 
-function renderPins(){
-    pins.forEach(pin => {
-        L.marker(pin)
-            .bindPopup("Test")
+function renderPins() {
+    userArray.forEach(user => {
+        let userCaption = ""
+        
+        if (user.items.length !== 0) {   
+            user.items.forEach(item => {
+                userCaption += `${item.title} $${item.price} \n `
+            })
+            L.marker(user.geolocation)
+            .bindPopup(userCaption)
             .addTo(map)
+        }
     })
 }
-
-

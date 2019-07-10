@@ -1,6 +1,6 @@
 #menuButton {
-    background-color: #2efdff;
-    box-shadow: 0 5px 0 #650000;
+    background-color: #BAF2D8;
+    box-shadow: 0 5px 0 #FE5F55;
     color: #650000;
     padding: 1em 1.5em;
     margin-left: 40px;
@@ -27,7 +27,7 @@
     z-index: 1001;
     top: 0;
     left: 0;
-    background-color: #650000;
+    background-color: #FE5F55;
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
@@ -38,7 +38,7 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #2efdff;
+    color: #BAF2D8;
     display: block;
     transition: 0.3s;
 }
@@ -78,4 +78,5 @@
 #map {
     height: 500px;
     width: 900px;
+    margin-left: 250px;
 }
