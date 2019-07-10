@@ -69,8 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
                  <option value = "video games" > Video Games </option> 
                  <option value = "books" > Books </option> 
                  </select>
-             Condition:
-             <input type="text" name="condition" >
              Price:
              <input type="text" name="price" >
              <input hidden type="text" value=${userId} >

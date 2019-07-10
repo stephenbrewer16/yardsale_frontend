@@ -83,3 +83,7 @@
 #message-div {
     text-align: center;
 }
+
+.item-title:hover {
+    color: blue;
+}

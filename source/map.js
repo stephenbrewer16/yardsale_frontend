@@ -35,7 +35,7 @@ function renderPins() {
         
         if (user.items.length !== 0) {   
             user.items.forEach(item => {
-                userCaption += `${item.title} $${item.price} \n `
+                userCaption += `<h5 data-id=${item.id} class="item-title">${item.title} $${item.price} \n </h5>`
             })
             L.marker([user.lat, user.long])
             .bindPopup(userCaption)
@@ -45,5 +45,4 @@ function renderPins() {
 }
 
 //ADD INDIVIDUAL MARKER
-
 
