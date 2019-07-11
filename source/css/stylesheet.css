@@ -1,21 +1,48 @@
+body {
+     position: relative;
+     background: #8FC49E
+}
+
+@keyframes moveRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
 #menuButton {
-    background-color: #BAF2D8;
-    box-shadow: 0 5px 0 #FE5F55;
-    color: #650000;
+    background-color: #E8FCE5;
+    box-shadow: 16px 10px 0px #FF665B;
+    color: #A5E2A3;
     padding: 1em 1.5em;
-    margin-left: 40px;
+    font-size: 16pt;
+    text-align: right;
+    /* margin-left: 40px; */
     text-decoration: none;
     text-transform: uppercase;
+    font-family: Tahoma, Geneva, sans-serif;
 }
 
 #menuButton:hover {
-    background-color: #079596;
+    background-color: #EEFFCE;
     cursor: pointer;
 }
 
 #menuButton:active {
     box-shadow: none;
-    top: 5px;
+    top: 8px;
 }
 
 
@@ -27,25 +54,26 @@
     z-index: 1001;
     top: 0;
     left: 0;
-    background-color: #FE5F55;
+    background-color: #FF665B;
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
+    font-family: Tahoma, Geneva, sans-serif;
 }
 
 
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
-    color: #BAF2D8;
+    font-size: 16px;
+    color: #E8FCE5;
     display: block;
     transition: 0.3s;
 }
 
 
 .sidenav a:hover {
-    color: #f1f1f1;
+    color: #D9E8BE;
 }
 
 
@@ -73,7 +101,7 @@
 }
 #user-info {
     text-align: center;
-    
+
 }
 #message-div {
     text-align: center;
@@ -114,4 +142,37 @@
 #item-info {
     display: flex;
     flex-direction: column;
+}
+#user-form{
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  display:flex;
+  /* border: solid 6px; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  color: #FBFFF4;
+  text-align: center;
+  font-size: 10pt;
+  /* font-weight:  bold; */
+}
+#user-form h1{
+  animation-name: moveRight;
+  animation-direction: alternate-reverse;
+  animation-duration: 2s;
+  font-size: 38pt;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+#user-info{
+  animation-name: fadeIn;
+  animation-duration: 3s;
+  text-align: center;
+  font-size: 34pt;
+  color: #E8FCE5;
+  font-family: Tahoma, Geneva, sans-serif;
 }

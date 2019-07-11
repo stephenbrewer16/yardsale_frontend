@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="leaflet/leaflet.css" />
     <script src="leaflet/leaflet.js" defer></script>
 
+    <script type="text/javascript" src="source/items.js" defer></script>
     <script type="text/javascript" src="source/map.js" defer></script>
     <script type="text/javascript" src="source/index.js"></script>
 </head>
 <body>
     <div id="user-info">
         <form id="user-form">
+          <h1 class='title'>Welcome to Yardsale! </h1>
             Username:<br>
             <input type="text" name="name"><br>
             Location:<br>
@@ -25,18 +27,22 @@
             <input type="submit" name="submit"><br>
         </form>
     </div>
-    
+
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">Search</a>
         <a id="browse" href="#">Browse</a>
         <a id="sell" href="#">Sell Item</a>
+        <a href="#">View Map</a>
+        <a id="inbox" href="#">Messages</a>
+        <a href="#">Wishlist</a>
         <a id="logout" href="#">Logout</a>
-    </div>    
+    </div>
     <span id='menuButton' onclick='openNav()'>Menu</span>
-    
+
     <div id="main">
     </div>
-    
+
     <div id="item-show">
     </div>
     <div id="map-flex">
@@ -45,12 +51,11 @@
 
         <div id="map">
         </div>
-        
-        <div id="item-display">  
+
+        <div id="item-display">
         </div>
     </div>
 
-    <!-- <div id="message-div">
-    </div> -->
+
 </body>
 </html>
