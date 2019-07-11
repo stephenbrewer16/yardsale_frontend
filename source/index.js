@@ -90,75 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }) //end itemBox listener
 
 
-    inbox.addEventListener('click', e => {
-        // console.log('click');
-        if (e.target.id === 'messages')
-
-            messageDiv.innerHTML = ''
-            messageDiv.innerHTML = `
-                <div id='message-info'>
-                    <input id='msg-body' type='textarea' name='body'>
-                    <input data-id=${userId} id='send' type='submit' name='send' value='send'>
-                </div>
-
-                `
-
-        const messageInfo = document.querySelector('#message-info')
-
-        messageInfo.addEventListener('click', e => {
-            if (e.target.id === 'send') {
-                const user = e.target.dataset.id
-                let messageBody = document.querySelector('#msg-body').value
-                console.log(user, messageBody);
-
-                fetch(messagesUrl, {
-                        method: "POST",
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            body: messageBody,
-                            user_id: user,
-                            item_id: 1
-                        }) // end of body
-                    }) // end of Fetch
-                    .then(r => r.json())
-                    .then(newMsg => {
-                        console.log(newMsg)
-                    })
-            } // end of if
-
-
-        }) //end of messageInfo listener
-
-
-    }) // end of messageDiv listener
-
-    inboxContainer.addEventListener('click', e => {
-        if (e.target.id === 'message') {
-            fetch(messagesUrl)
-                .then(r => r.json())
-                .then(msgObjs => {
-                    messages = msgObjs
-                    // console.log(msgObjs);
-                    console.log(messages);
-                    console.log(userId)
-                    let userMsgs = messages.filter(msgObjs => msgObjs.user_id === userId)
-                    console.log(userMsgs)
-                    userMsg.forEach(msg => {
-                        inboxContainer.innerHTML = ''
-                        inboxContainer.innerHTML += `
-
-
-        `
-                    })
-                }) // end of fetch Msgs
-
-        }
-
-
-    }) // end of inbox listener
+    
 
     logout.addEventListener('click', e => {
         if (e.target.innerText === 'Logout')
