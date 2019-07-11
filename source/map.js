@@ -35,14 +35,97 @@ function renderPins() {
         
         if (user.items.length !== 0) {   
             user.items.forEach(item => {
-                userCaption += `<h5 data-id=${item.id} class="item-title">${item.title} $${item.price} \n </h5>`
+                userCaption += `<h5 id=${item.id} class="item-title">${item.title} $${item.price} \n </h5>`
             })
-            L.marker([user.lat, user.long])
+            let marker = L.marker([user.lat, user.long])
             .bindPopup(userCaption)
             .addTo(map)
+    //MARKER EVENT LISTENER
+            marker.addEventListener('click', function(e) {
+                const itemTitle = document.querySelector(".item-title")
+                itemTitle.addEventListener('click', function(e) {
+                    //Call function to render item and pass in e.target.id (id is string here)
+                    renderItem(e.target.id)
+                })
+            })                         
+    //END MARKER EVENT LISTENER
         }
     })
 }
 
-//ADD INDIVIDUAL MARKER
+//RENDER ITEMS ON MARKER CLICK
+const itemsURL = 'http://localhost:3000/api/v1/items'
 
+function renderItem(itemId) { 
+    fetch('http://localhost:3000/api/v1/items')
+        .then(resp => resp.json())
+        .then(items => {
+            items.forEach(item => {
+                if (item.id === parseInt(itemId)) {
+                    itemDiv.innerHTML = ""
+                    //Slap item to DOM
+                    itemDiv.innerHTML += `
+                    <img src=${item.photo}/>
+                    <h4>${item.title} $${item.price}</h4>
+                    <h5>${item.category}</h5>
+                    <p>${item.description}</p>
+                `
+                }
+            })
+        })
+}
+
+//END RENDER ITEMS
+
+//ADD INDIVIDUAL MARKER
+const itemsUrl = `http://localhost:3000/api/v1/items`
+const itemDiv = document.querySelector("#item-display")
+
+itemDiv.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const itemForm = document.querySelector('#item-form')
+    let title = itemForm[0].value
+    let description = itemForm[1].value
+    let photo = itemForm[2].value
+    let category = e.target.querySelector("select").value
+    let price = itemForm[3].value
+    let userNum = itemForm[4].value
+    debugger
+    console.log(title, description, photo, category, price, userNum)
+    fetch(itemsUrl, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            title,
+            description,
+            photo,
+            category,
+            price,
+            user_id: userNum
+        }) // end of body
+    }) // end of Fetch
+        .then(r => r.json())
+        .then(newItem => {
+            postPin(newItem)
+        })
+}) // end of itemDiv event listener
+
+function postPin(newItem) {
+    let userCaption = ""
+    
+    userCaption = `<h5 id=${newItem.id} class="item-title">${newItem.title} $${newItem.price}</h5>`
+    let marker = L.marker([newItem.user.lat, newItem.user.long])
+        .bindPopup(userCaption)
+        .addTo(map)
+    //MARKER EVENT LISTENER
+    marker.addEventListener('click', function (e) {
+        const itemTitle = document.querySelector(".item-title")
+        itemTitle.addEventListener('click', function (e) {
+            //DO
+        })
+    })
+    //
+}
