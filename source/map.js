@@ -65,10 +65,12 @@ function renderItem(itemId) {
                     itemDiv.innerHTML = ""
                     //Slap item to DOM
                     itemDiv.innerHTML += `
-                    <img src=${item.photo}/>
-                    <h4>${item.title} $${item.price}</h4>
-                    <h5>${item.category}</h5>
-                    <p>${item.description}</p>
+                    <div id="item-info">
+                        <img src=${item.photo}/>
+                        <h4>${item.title} $${item.price}</h4>
+                        <h5>${item.category}</h5>
+                        <p>${item.description}</p>
+                    </div>
                 `
                 }
             })

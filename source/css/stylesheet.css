@@ -84,9 +84,8 @@
 }
 
 #map {
-    height: 500px;
-    width: 900px;
-    margin-left: 250px;
+    height: 600px;
+    width: 70%;
 }
 
 #map-flex {
@@ -96,12 +95,18 @@
 }
 
 #item-display {
-    border: solid 1px;
-    margin-right: 10%;
-    width: 30%;
+    /* border: solid 1px; */
+    margin-left: 10px;
+    width: 20%;
 
 }
 
-#itemDiv {
-    margin-left: 250px;
+#item-div {
+    width: 25%;
+    /* border: solid 1px; */
+}
+
+#item-info {
+    display: flex;
+    flex-direction: column;
 }

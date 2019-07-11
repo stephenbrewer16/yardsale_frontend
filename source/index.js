@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logout = document.getElementById('logout')
     const inbox = document.getElementById('inbox')
     const browse = document.getElementById('browse')
+    const itemBox = document.querySelector('#item-div')
 
     ///local state///
     let userId = null
@@ -48,11 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
             })
     }) // end of userForm listener
 
-    //begin itemDiv listener
+    //begin itemBox listener
     sell.addEventListener('click', (e) => {
         if (e.target.id === 'sell') {
-            itemDiv.innerHTML = ""
-            itemDiv.innerHTML += `
+            itemBox.innerHTML = ""
+            itemBox.innerHTML += `
          <div id="item-info">
              <form id="item-form" >
              Title:
@@ -78,8 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `
         }
         closeNav()
-        itemDiv.style.display = 'block'
-    }) //end itemDiv listener
+        itemBox.style.display = 'block'
+    }) //end itemBox listener
 
     inbox.addEventListener('click', e => {
         // console.log('click');
@@ -156,32 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
             closeNav()
         menuBtn.style.display = 'none'
         userForm.style.display = 'block'
-        itemDiv.style.display = 'none'
+        itemBox.style.display = 'none'
         map.style.display = 'none'
     })
-    // function renderItems(item){
-        // itemDiv.innerHTML += `
-        // <div>
-        //     <ul id='itemName'> 
-        //     ${item.title}
-        //     </ul> 
-        //     <br>
-        // </div>
-        // `
-        
-    //     const itemName = document.querySelector("#itemName")
-    //     itemName.addEventListener('click', e => {
-    //         if (e.target.innerText === "")
-    //         itemName.innerHTML += `
-    //         <ul>
-    //             Description:${item.description}
-    //             Photo:${item.photo}
-    //             Category:${item.category}
-    //             Price:${item.price}
-    //         </ul>
-    //         `
-    //     })
-    // }
 
     browse.addEventListener('click', e => {
         if (e.target.innerText === 'Browse')
@@ -191,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(resp => resp.json())
         .then(json => {
             json.forEach(item => {
-                itemDiv.innerHTML += `
+                itemBox.innerHTML += `
                 <div id='itemName'>
                     <ul>
                     ${item.title}
