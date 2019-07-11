@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const inbox = document.getElementById('inbox')
     const browse = document.getElementById('browse')
     const itemBox = document.querySelector('#item-div')
+    const itemDis = document.querySelector('#item-display')
     const itemShow = document.querySelector('#item-show')
 
     ///local state///
@@ -61,10 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
              <form id="item-form" >
              Title:
              <input type="text" name="title" >
+             <br>
              Description:
              <input type="text" name="description" >
+             <br>
              Photo URL:
              <input type="text" name="photo" >
+             <br>
              Category:
              <select name = "category" form = "item-info">
                  <option value = "clothing" > Clothing </option> 
@@ -73,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  <option value = "books" > Books </option> 
                  <option value = "electronics" > Electronics </option> 
                  </select>
+                 <br>
              Price:
              <input type="text" name="price" >
              <input hidden type="text" value=${userId} >
@@ -83,7 +88,36 @@ document.addEventListener('DOMContentLoaded', () => {
         `
         }
         closeNav()
-        itemBox.style.display = 'block'
+        itemBox.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const itemForm = document.querySelector('#item-form')
+            let title = itemForm[0].value
+            let description = itemForm[1].value
+            let photo = itemForm[2].value
+            let category = e.target.querySelector("select").value
+            let price = itemForm[3].value
+            let userNum = itemForm[4].value
+            console.log(title, description, photo, category, price, userNum)
+            fetch(itemsUrl, {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title,
+                        description,
+                        photo,
+                        category,
+                        price,
+                        user_id: userNum
+                    }) // end of body
+                }) // end of Fetch
+                .then(r => r.json())
+                .then(newItem => {
+                    postPin(newItem)
+                })
+        })
     }) //end itemBox listener
 
     inbox.addEventListener('click', e => {
@@ -169,11 +203,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.innerText === 'Browse')
         closeNav()
         itemShow.innerHTML += `
+        <ul>
         <button>Electronics</button>
         <button>Clothing</button>
         <button>Books</button>
         <button>Video Games</button>
         <button>Records</button>
+        </ul>
         `
             itemShow.addEventListener('click', e => {
                if (e.target.nodeName === "BUTTON"){

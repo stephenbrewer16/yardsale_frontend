@@ -81,7 +81,7 @@ function renderItem(itemId) {
 
 //ADD INDIVIDUAL MARKER
 const itemsUrl = `http://localhost:3000/api/v1/items`
-const itemDiv = document.querySelector("#item-display")
+const itemDiv = document.querySelector("#item-div")
 
 itemDiv.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -92,7 +92,6 @@ itemDiv.addEventListener('submit', (e) => {
     let category = e.target.querySelector("select").value
     let price = itemForm[3].value
     let userNum = itemForm[4].value
-    debugger
     console.log(title, description, photo, category, price, userNum)
     fetch(itemsUrl, {
         method: "POST",
