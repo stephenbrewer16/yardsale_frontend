@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const itemBox = document.querySelector('#item-div')
     const itemDis = document.querySelector('#item-display')
     const itemShow = document.querySelector('#item-show')
+    const mapFlex = document.querySelector('#map-flex')
 
     ///local state///
     let userId = null
@@ -44,9 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(newUser => {
                 if (newUser.id) {
                     userId = newUser.id
-                    menuBtn.style.display = 'block'
                     userForm.style.display = 'none'
+                    menuBtn.style.display = 'block'
                     map.style.display = 'block'
+                    itemBox.style.display = 'block'
+                    itemShow.style.display = 'block'
                 } 
             })
     }) // end of userForm listener
@@ -96,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         userForm.style.display = 'block'
         itemBox.style.display = 'none'
         map.style.display = 'none'
+        itemShow.style.display = 'none'
     })
 
     browse.addEventListener('click', e => {

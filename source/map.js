@@ -103,6 +103,7 @@ function renderItem(itemId) {
 const itemsUrl = `http://localhost:3000/api/v1/items`
 const itemDiv = document.querySelector("#item-display")
 const itemForm = document.querySelector("#item-div")
+const itemBox = document.querySelector('#item-div')
 
 itemForm.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -133,6 +134,7 @@ itemForm.addEventListener('submit', (e) => {
         .then(newItem => {
             postPin(newItem)
         })
+    itemBox.innerHTML = ""
 }) // end of itemDiv event listener
 
 function postPin(newItem) {
