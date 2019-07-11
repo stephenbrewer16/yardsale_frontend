@@ -2,16 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /// DOM ELEMENTS ///
     const usersUrl = `http://localhost:3000/api/v1/users`
-    // const messagesUrl = `http://localhost:3000/api/v1/messages`
     const itemsUrl = `http://localhost:3000/api/v1/items`
     const userForm = document.querySelector("#user-form")
-    // const messageDiv = document.querySelector('#message-div')
-    // const inboxContainer = document.querySelector('#inbox')
     const sell = document.getElementById('sell')
     const menuBtn = document.getElementById('menuButton')
     const map = document.getElementById('map')
     const logout = document.getElementById('logout')
-    // const inbox = document.getElementById('inbox')
     const browse = document.getElementById('browse')
     const itemBox = document.querySelector('#item-div')
     const itemDis = document.querySelector('#item-display')
@@ -130,9 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
             closeNav()
         menuBtn.style.display = 'none'
         userForm.style.display = 'block'
-        itemBox.style.display = 'none'
+        itemBox.innerHTML = ""
         map.style.display = 'none'
-        itemShow.style.display = 'none'
+        itemShow.innerHTML = ""
+        itemDis.innerHTML = ""
     })
 }) // end of DOM load
 
