@@ -92,16 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeNav()
     }) //end itemBox listener
 
-    logout.addEventListener('click', e => {
-        if (e.target.innerText === 'Logout')
-            closeNav()
-        menuBtn.style.display = 'none'
-        userForm.style.display = 'block'
-        itemBox.style.display = 'none'
-        map.style.display = 'none'
-        itemShow.style.display = 'none'
-    })
-
+    
     browse.addEventListener('click', e => {
         if (e.target.innerText === 'Browse')
         itemShow.innerHTML = ""
@@ -115,8 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
         <button>Records</button>
         </ul>
         `
-            itemShow.addEventListener('click', e => {
-               if (e.target.nodeName === "BUTTON"){
+        itemShow.addEventListener('click', e => {
+            if (e.target.nodeName === "BUTTON"){
                 fetch(itemsUrl+"/"+e.target.innerText)
                 .then(resp => resp.json())
                 .then(items => {
@@ -124,12 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     items.forEach(item => {
                         itemBox.innerHTML += `
                         <ul> 
-                            <b>${item.title}</b>
-                            <ul>
-                                <b> Description: </b>${item.description}
-                                <br>
-                                <b> Price: </b>${item.price}
-                            </ul>
+                        <b>${item.title}</b>
+                        <ul>
+                        <b> Description: </b>${item.description}
+                        <br>
+                        <b> Price: </b>$${item.price}
+                        </ul>
                         </ul>
                         `
                     })
@@ -137,7 +128,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         })
     })
-
+    
+    logout.addEventListener('click', e => {
+        if (e.target.innerText === 'Logout')
+            closeNav()
+        menuBtn.style.display = 'none'
+        userForm.style.display = 'block'
+        itemBox.style.display = 'none'
+        map.style.display = 'none'
+        itemShow.style.display = 'none'
+        itemDis.innerHTML = ""
+    })
 }) // end of DOM load
 
 
