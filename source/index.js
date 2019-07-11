@@ -69,9 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
              Description:
              <input type="text" name="description" >
              <br>
-             Photo URL:
-             <input type="text" name="photo" >
-             <br>
              Category:
              <select name = "category" form = "item-info">
                  <option value = "Clothing" > Clothing </option> 
@@ -121,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         <br>
                         <b> Price: </b>$${item.price}
                         </ul>
-                        </ul>
                         `
                     })
                 })
@@ -137,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         itemBox.style.display = 'none'
         map.style.display = 'none'
         itemShow.style.display = 'none'
-        itemDis.innerHTML = ""
     })
 }) // end of DOM load
 

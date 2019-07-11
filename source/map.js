@@ -64,7 +64,6 @@ function renderItem(itemId) {
                     itemDiv.innerHTML = ""
                     //Slap item to DOM
                     itemDiv.innerHTML += `
-                    <img src=${item.photo}/>
                     <h4>${item.title} $${item.price}</h4>
                     <h5>${item.category}</h5>
                     <p>${item.description}</p>
@@ -110,11 +109,10 @@ itemForm.addEventListener('submit', (e) => {
     const itemForm = document.querySelector('#item-form')
     let title = itemForm[0].value
     let description = itemForm[1].value
-    let photo = itemForm[2].value
     let category = e.target.querySelector("select").value
-    let price = itemForm[3].value
-    let userNum = itemForm[4].value
-    console.log(title, description, photo, category, price, userNum)
+    let price = itemForm[2].value
+    let userNum = itemForm[3].value
+    console.log(title, description, category, price, userNum)
     fetch(itemsUrl, {
         method: "POST",
         headers: {
@@ -124,7 +122,6 @@ itemForm.addEventListener('submit', (e) => {
         body: JSON.stringify({
             title,
             description,
-            photo,
             category,
             price,
             user_id: userNum
