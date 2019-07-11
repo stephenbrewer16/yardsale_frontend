@@ -2,10 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /// DOM ELEMENTS ///
     const usersUrl = `http://localhost:3000/api/v1/users`
-    const itemsUrl = `http://localhost:3000/api/v1/items`
     const messagesUrl = `http://localhost:3000/api/v1/messages`
     const userForm = document.querySelector("#user-form")
-    const itemDiv = document.querySelector("#itemDiv")
     const messageDiv = document.querySelector('#message-div')
     const inboxContainer = document.querySelector('#inbox')
     const sell = document.getElementById('sell')
@@ -80,37 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closeNav()
         itemDiv.style.display = 'block'
     }) //end itemDiv listener
-
-    itemDiv.addEventListener('submit', (e) => {
-        e.preventDefault()
-        const itemForm = document.querySelector('#item-form')
-        let title = itemForm[0].value
-        let description = itemForm[1].value
-        let photo = itemForm[2].value
-        let category = itemForm[3].value
-        let price = itemForm[4].value
-        let userNum = itemForm[5].value
-        console.log(title, description, photo, category, price, userNum)
-        fetch(itemsUrl, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                title,
-                description,
-                photo,
-                category,
-                price,
-                user_id: userNum
-            }) // end of body
-        }) // end of Fetch
-            .then(r => r.json())
-            .then(newItem => {
-                console.log(newItem)
-            })
-    }) // end of itemDiv event listener
 
     inbox.addEventListener('click', e => {
         // console.log('click');

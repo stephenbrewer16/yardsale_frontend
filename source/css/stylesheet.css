@@ -75,15 +75,33 @@
     text-align: center;
     
 }
-#map {
-    height: 500px;
-    width: 900px;
-    margin-left: 250px;
-}
 #message-div {
     text-align: center;
 }
 
 .item-title:hover {
     color: blue;
+}
+
+#map {
+    height: 500px;
+    width: 900px;
+    margin-left: 250px;
+}
+
+#map-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#item-display {
+    border: solid 1px;
+    margin-right: 10%;
+    width: 30%;
+
+}
+
+#itemDiv {
+    margin-left: 250px;
 }
