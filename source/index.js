@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const map = document.getElementById('map')
     const logout = document.getElementById('logout')
     const inbox = document.getElementById('inbox')
+    const browse = document.getElementById('browse')
 
     ///local state///
     let userId = null
@@ -66,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  <option value = "records" > Records </option> 
                  <option value = "video games" > Video Games </option> 
                  <option value = "books" > Books </option> 
+                 <option value = "electronics" > Electronics </option> 
                  </select>
              Price:
              <input type="text" name="price" >
@@ -157,6 +159,59 @@ document.addEventListener('DOMContentLoaded', () => {
         itemDiv.style.display = 'none'
         map.style.display = 'none'
     })
+    // function renderItems(item){
+        // itemDiv.innerHTML += `
+        // <div>
+        //     <ul id='itemName'> 
+        //     ${item.title}
+        //     </ul> 
+        //     <br>
+        // </div>
+        // `
+        
+    //     const itemName = document.querySelector("#itemName")
+    //     itemName.addEventListener('click', e => {
+    //         if (e.target.innerText === "")
+    //         itemName.innerHTML += `
+    //         <ul>
+    //             Description:${item.description}
+    //             Photo:${item.photo}
+    //             Category:${item.category}
+    //             Price:${item.price}
+    //         </ul>
+    //         `
+    //     })
+    // }
+
+    browse.addEventListener('click', e => {
+        if (e.target.innerText === 'Browse')
+        closeNav()
+        map.style.display = 'none'
+        fetch(itemsUrl)
+        .then(resp => resp.json())
+        .then(json => {
+            json.forEach(item => {
+                itemDiv.innerHTML += `
+                <div id='itemName'>
+                    <ul>
+                    ${item.title}
+                    </ul> 
+                    <br>
+                </div>
+                `
+            })
+            let itemName = document.querySelector('#itemName')
+            itemName.addEventListener('click', e => {
+                if (e.target.innerHTML === `${item.title}`)
+                itemName.innerHTML += `
+                <ul>
+                ${item.description}
+                </ul> 
+                `
+            })
+        })
+    })
+
 }) // end of DOM load
 
 
