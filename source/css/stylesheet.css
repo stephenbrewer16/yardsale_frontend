@@ -103,9 +103,13 @@
 
 #item-div {
     width: 25%;
+    height: 25%
+    /* display:flex; */
     /* border: solid 1px; */
 }
-
+#item-show{
+    height: 75%
+}
 #item-info {
     display: flex;
     flex-direction: column;

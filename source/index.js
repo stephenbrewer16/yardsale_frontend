@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const inbox = document.getElementById('inbox')
     const browse = document.getElementById('browse')
     const itemBox = document.querySelector('#item-div')
+    const itemShow = document.querySelector('#item-show')
 
     ///local state///
     let userId = null
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             itemBox.innerHTML = ""
             itemBox.innerHTML += `
          <div id="item-info">
+         <ul>
              <form id="item-form" >
              Title:
              <input type="text" name="title" >
@@ -77,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
              <input type="submit" name="submit" >
              </form>
         </div>
+        </ul>
         `
         }
         closeNav()
@@ -165,45 +168,34 @@ document.addEventListener('DOMContentLoaded', () => {
     browse.addEventListener('click', e => {
         if (e.target.innerText === 'Browse')
         closeNav()
-        map.style.display = 'none'
-        itemDiv.innerHTML = `
+        itemShow.innerHTML += `
         <button>Electronics</button>
         <button>Clothing</button>
         <button>Books</button>
         <button>Video Games</button>
         <button>Records</button>
         `
-            itemDiv.addEventListener('click', e => {
-                if (e.target.innerText === "Electronics")
-                fetch(itemsUrl)
+            itemShow.addEventListener('click', e => {
+               if (e.target.nodeName === "BUTTON"){
+                fetch(itemsUrl+"/"+e.target.innerText)
                 .then(resp => resp.json())
-                .then(json => {
-                    json.forEach()
+                .then(items => {
+                    itemBox.innerHTML = "";
+                    items.forEach(item => {
+                        itemBox.innerHTML += `
+                        <ul> 
+                            <b>${item.title}</b>
+                            <ul>
+                                <b> Description: </b>${item.description}
+                                <br>
+                                <b> Price: </b>${item.price}
+                            </ul>
+                        </ul>
+                        `
+                    })
                 })
-            })
-        // fetch(itemsUrl)
-        // .then(resp => resp.json())
-        // .then(json => {
-        //     json.forEach(item => {
-        //         itemDiv.innerHTML += `
-        //         <div id='itemName'>
-        //             <ul>
-        //             ${item.title}
-        //             </ul> 
-        //             <br>
-        //         </div>
-        //         `
-        //     })
-        //     let itemName = document.querySelector('#itemName')
-        //     itemName.addEventListener('click', e => {
-        //         if (e.target.innerHTML === `${item.title}`)
-        //         itemName.innerHTML += `
-        //         <ul>
-        //         ${item.description}
-        //         </ul> 
-        //         `
-        //     })
-        // })
+            }
+        })
     })
 
 }) // end of DOM load
