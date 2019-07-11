@@ -2,6 +2,7 @@
 
 const map = L.map('map').setView([40.7128, -74.0060], 13)
 const mapDiv = document.querySelector('#map')
+let userId = localStorage.getItem("user")
 
 const mapWindow = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic21pdGhhbTUwIiwiYSI6ImNqeHZ4NWNxcjA5cGYzY29jZjBlNnFub2kifQ.s8Am01fhZoezrzcGmFV1SQ', {
     attribution: "Thank you, Mapbox!",
@@ -75,28 +76,18 @@ function renderItem(itemId) {
                     <div class='message-thread'>
                     </div>
                 `
+                //LIST MESSAGES
                     item.messages.forEach(message => {
                         itemDiv.querySelector('.message-thread').innerHTML += `
                         <p><strong>${item.user.name}</strong>: ${message.body}</p>
                         `
                     })
+                //END LIST MESSAGES
 
                 }
             })
         })//end fetch
-
-    // //FETCH EXISTING MESSAGES
-    // fetch(messagesUrl)
-    //     .then(resp => resp.json())
-    //     .then(messages => {
-    //         let thisItem = messages.find(message => {
-    //             message.item.id === user.item.id
-    //         })
-
-    //     })
-    //         //END FETCH EXISTING
 }
-
 //END RENDER ITEMS
 
 //ADD INDIVIDUAL MARKER
@@ -113,7 +104,6 @@ itemForm.addEventListener('submit', (e) => {
     let category = e.target.querySelector("select").value
     let price = itemForm[3].value
     let userNum = itemForm[4].value
-    console.log(title, description, photo, category, price, userNum)
     fetch(itemsUrl, {
         method: "POST",
         headers: {
@@ -148,15 +138,17 @@ function postPin(newItem) {
 
 
 //MESSAGE EVENT LISTENER
-// const messageInfo = document.querySelector('.message-info')
 const messageThread = document.querySelector('.message-thread')
 const messagesUrl = `http://localhost:3000/api/v1/messages`
 
 itemDiv.addEventListener('click', e => {
         if (e.target.id === 'send') {
-            const user = e.target.dataset.id
+
+            const thisThread = e.target.parentElement.nextElementSibling
+
+
             let messageBody = document.querySelector('.msg-body').value
-            console.log(user, messageBody);
+            console.log(userId, messageBody);
 
             
 
@@ -168,14 +160,15 @@ itemDiv.addEventListener('click', e => {
                 },
                 body: JSON.stringify({
                     body: messageBody,
-                    user_id: user,
-                    item_id: 1
+                    user_id: parseInt(userId),
+                    item_id: e.target.dataset.id
                 }) // end of body
             }) // end of Fetch
                 .then(r => r.json())
                 .then(message => {
-                    messageThread.innerHTML += `
-                        ${message.user.name}: ${message.body} \n
+                 //NEEDS MESSAGE THREAD SPECIFIC TO ITEM
+                    thisThread.innerHTML += `
+                        <strong>${message.user.name}</strong>: ${message.body} \n
                     `
                 })
         } // end of if
@@ -183,51 +176,3 @@ itemDiv.addEventListener('click', e => {
 
     }) //end of messageInfo listener
 //END MESSAGE EVENT LISTENER
-
-
-// const inboxContainer = document.querySelector('#inbox')
-// const inbox = document.getElementById('inbox')
-
-
-// inbox.addEventListener('click', e => {
-//     // console.log('click');
-//     if (e.target.id === 'messages')
-
-//         messageDiv.innerHTML = ''
-//     messageDiv.innerHTML = `
-//                 <div id='message-info'>
-//                     <input id='msg-body' type='textarea' name='body'>
-//                     <input data-id=${userId} id='send' type='submit' name='send' value='send'>
-//                 </div>
-
-//                 `
-
-
-
-
-// }) // end of messageDiv listener
-
-// inboxContainer.addEventListener('click', e => {
-//     if (e.target.id === 'message') {
-//         fetch(messagesUrl)
-//             .then(r => r.json())
-//             .then(msgObjs => {
-//                 messages = msgObjs
-//                 // console.log(msgObjs);
-//                 console.log(messages);
-//                 console.log(userId)
-//                 let userMsgs = messages.filter(msgObjs => msgObjs.user_id === userId)
-//                 console.log(userMsgs)
-//                 userMsg.forEach(msg => {
-//                     inboxContainer.innerHTML = ''
-//                     inboxContainer.innerHTML += `
-          
-
-//         `
-//                 })
-//             }) // end of fetch Msgs
-
-//     }
-
-
-// }) // end of inbox listener
