@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /// DOM ELEMENTS ///
     const usersUrl = `http://localhost:3000/api/v1/users`
     const messagesUrl = `http://localhost:3000/api/v1/messages`
+    const itemsUrl = `http://localhost:3000/api/v1/items`
     const userForm = document.querySelector("#user-form")
     const messageDiv = document.querySelector('#message-div')
     const inboxContainer = document.querySelector('#inbox')
@@ -12,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logout = document.getElementById('logout')
     const inbox = document.getElementById('inbox')
     const browse = document.getElementById('browse')
+    
 
     ///local state///
     let userId = null
@@ -187,29 +189,44 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.innerText === 'Browse')
         closeNav()
         map.style.display = 'none'
-        fetch(itemsUrl)
-        .then(resp => resp.json())
-        .then(json => {
-            json.forEach(item => {
-                itemDiv.innerHTML += `
-                <div id='itemName'>
-                    <ul>
-                    ${item.title}
-                    </ul> 
-                    <br>
-                </div>
-                `
+        itemDiv.innerHTML = `
+        <button>Electronics</button>
+        <button>Clothing</button>
+        <button>Books</button>
+        <button>Video Games</button>
+        <button>Records</button>
+        `
+            itemDiv.addEventListener('click', e => {
+                if (e.target.innerText === "Electronics")
+                fetch(itemsUrl)
+                .then(resp => resp.json())
+                .then(json => {
+                    json.forEach()
+                })
             })
-            let itemName = document.querySelector('#itemName')
-            itemName.addEventListener('click', e => {
-                if (e.target.innerHTML === `${item.title}`)
-                itemName.innerHTML += `
-                <ul>
-                ${item.description}
-                </ul> 
-                `
-            })
-        })
+        // fetch(itemsUrl)
+        // .then(resp => resp.json())
+        // .then(json => {
+        //     json.forEach(item => {
+        //         itemDiv.innerHTML += `
+        //         <div id='itemName'>
+        //             <ul>
+        //             ${item.title}
+        //             </ul> 
+        //             <br>
+        //         </div>
+        //         `
+        //     })
+        //     let itemName = document.querySelector('#itemName')
+        //     itemName.addEventListener('click', e => {
+        //         if (e.target.innerHTML === `${item.title}`)
+        //         itemName.innerHTML += `
+        //         <ul>
+        //         ${item.description}
+        //         </ul> 
+        //         `
+        //     })
+        // })
     })
 
 }) // end of DOM load
