@@ -139,9 +139,11 @@ function postPin(newItem) {
     let userCaption = ""
     
     userCaption = `<h5 id=${newItem.id} class="item-title">${newItem.title} $${newItem.price}</h5>`
-    let marker = L.marker([newItem.user.lat, newItem.user.long])
+    L.marker([newItem.user.lat, newItem.user.long])
         .bindPopup(userCaption)
         .addTo(map)
+
+    map.panTo([newItem.user.lat, newItem.user.long])
 }
 
 

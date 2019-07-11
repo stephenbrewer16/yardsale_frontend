@@ -108,7 +108,8 @@
     /* border: solid 1px; */
 }
 #item-show{
-    height: 75%
+    margin-left: 35%;
+    height: 75%;
 }
 #item-info {
     display: flex;

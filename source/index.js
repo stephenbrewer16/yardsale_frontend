@@ -166,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     browse.addEventListener('click', e => {
         if (e.target.innerText === 'Browse')
+        itemShow.innerHTML =""
         closeNav()
         itemShow.innerHTML += `
         <button>Electronics</button>
