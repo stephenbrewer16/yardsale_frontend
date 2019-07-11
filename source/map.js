@@ -1,7 +1,7 @@
 //INITIALIZE MAP
 
 const map = L.map('map').setView([40.7128, -74.0060], 13)
-
+const mapDiv = document.querySelector('#map')
 
 const mapWindow = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic21pdGhhbTUwIiwiYSI6ImNqeHZ4NWNxcjA5cGYzY29jZjBlNnFub2kifQ.s8Am01fhZoezrzcGmFV1SQ', {
     attribution: "Thank you, Mapbox!",
@@ -11,6 +11,14 @@ const mapWindow = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.
     accessToken: 'pk.eyJ1Ijoic21pdGhhbTUwIiwiYSI6ImNqeHZ4NWNxcjA5cGYzY29jZjBlNnFub2kifQ.s8Am01fhZoezrzcGmFV1SQ'
 }).addTo(map)
 
+//MAP EVENT LISTENER
+mapDiv.addEventListener('click', function(e) {
+    if (e.target.className === "item-title") {
+        renderItem(e.target.id)
+    }
+})
+
+//END MAP EVENT LISTENER
 
 
 
@@ -40,15 +48,6 @@ function renderPins() {
             let marker = L.marker([user.lat, user.long])
             .bindPopup(userCaption)
             .addTo(map)
-    //MARKER EVENT LISTENER
-            marker.addEventListener('click', function(e) {
-                const itemTitle = document.querySelector(".item-title")
-                itemTitle.addEventListener('click', function(e) {
-                    //Call function to render item and pass in e.target.id (id is string here)
-                    renderItem(e.target.id)
-                })
-            })                         
-    //END MARKER EVENT LISTENER
         }
     })
 }
@@ -65,12 +64,10 @@ function renderItem(itemId) {
                     itemDiv.innerHTML = ""
                     //Slap item to DOM
                     itemDiv.innerHTML += `
-                    <div id="item-info">
-                        <img src=${item.photo}/>
-                        <h4>${item.title} $${item.price}</h4>
-                        <h5>${item.category}</h5>
-                        <p>${item.description}</p>
-                    </div>
+                    <img src=${item.photo}/>
+                    <h4>${item.title} $${item.price}</h4>
+                    <h5>${item.category}</h5>
+                    <p>${item.description}</p>
                 `
                 }
             })
@@ -122,12 +119,4 @@ function postPin(newItem) {
     let marker = L.marker([newItem.user.lat, newItem.user.long])
         .bindPopup(userCaption)
         .addTo(map)
-    //MARKER EVENT LISTENER
-    marker.addEventListener('click', function (e) {
-        const itemTitle = document.querySelector(".item-title")
-        itemTitle.addEventListener('click', function (e) {
-            //DO
-        })
-    })
-    //
 }
