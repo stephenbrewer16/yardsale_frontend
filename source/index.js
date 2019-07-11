@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(newUser => {
                 if (newUser.id) {
                     userId = newUser.id
+                    localStorage.setItem("user", userId)
+                    menuBtn.style.display = 'block'
                     userForm.style.display = 'none'
                     menuBtn.style.display = 'block'
                     map.style.display = 'block'
