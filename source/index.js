@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     menuBtn.style.display = 'block'
                     userForm.style.display = 'none'
                     map.style.display = 'block'
-                } 
+                }
             })
     }) // end of userForm listener
 
@@ -67,11 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
              <input type="text" name="photo" >
              Category:
              <select name = "category" form = "item-info">
-                 <option value = "clothing" > Clothing </option> 
-                 <option value = "records" > Records </option> 
-                 <option value = "video games" > Video Games </option> 
-                 <option value = "books" > Books </option> 
-                 <option value = "electronics" > Electronics </option> 
+                 <option value = "clothing" > Clothing </option>
+                 <option value = "records" > Records </option>
+                 <option value = "video games" > Video Games </option>
+                 <option value = "books" > Books </option>
+                 <option value = "electronics" > Electronics </option>
                  </select>
              Price:
              <input type="text" name="price" >
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     userMsg.forEach(msg => {
                         inboxContainer.innerHTML = ''
                         inboxContainer.innerHTML += `
-          
+
 
         `
                     })
@@ -183,10 +183,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     itemBox.innerHTML = "";
                     items.forEach(item => {
                         itemBox.innerHTML += `
-                        <ul> 
+                        <ul>
                             <b>${item.title}</b>
                             <ul>
                                 <b> Description: </b>${item.description}
+                                <br>
                                 <br>
                                 <b> Price: </b>${item.price}
                             </ul>
