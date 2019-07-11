@@ -53,8 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //begin itemBox listener
     sell.addEventListener('click', (e) => {
+        itemBox.innerHTML = ""
+        itemShow.innerHTML = ""
         if (e.target.id === 'sell') {
-            itemBox.innerHTML = ""
             itemBox.innerHTML += `
          <div id="item-info">
          <ul>
@@ -72,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
              <select name = "category" form = "item-info">
                  <option value = "Clothing" > Clothing </option> 
                  <option value = "Records" > Records </option> 
-                 <option value = "Video games" > Video Games </option> 
                  <option value = "Books" > Books </option> 
                  <option value = "Electronics" > Electronics </option> 
                  </select>
@@ -87,107 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `
         }
         closeNav()
-        itemBox.addEventListener('submit', (e) => {
-            e.preventDefault()
-            const itemForm = document.querySelector('#item-form')
-            let title = itemForm[0].value
-            let description = itemForm[1].value
-            let photo = itemForm[2].value
-            let category = e.target.querySelector("select").value
-            let price = itemForm[3].value
-            let userNum = itemForm[4].value
-            console.log(title, description, photo, category, price, userNum)
-            fetch(itemsUrl, {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        title,
-                        description,
-                        photo,
-                        category,
-                        price,
-                        user_id: userNum
-                    }) // end of body
-                }) // end of Fetch
-                .then(r => r.json())
-                .then(newItem => {
-                    postPin(newItem)
-                })
-        })
     }) //end itemBox listener
-
-    // inbox.addEventListener('click', e => {
-    //     // console.log('click');
-    //     if (e.target.id === 'messages')
-
-    //         messageDiv.innerHTML = ''
-    //         messageDiv.innerHTML = `
-    //             <div id='message-info'>
-    //                 <input id='msg-body' type='textarea' name='body'>
-    //                 <input data-id=${userId} id='send' type='submit' name='send' value='send'>
-    //             </div>
-
-    //             `
-
-    //     const messageInfo = document.querySelector('#message-info')
-
-    //     messageInfo.addEventListener('click', e => {
-    //         if (e.target.id === 'send') {
-    //             const user = e.target.dataset.id
-    //             let messageBody = document.querySelector('#msg-body').value
-    //             console.log(user, messageBody);
-
-    //             fetch(messagesUrl, {
-    //                     method: "POST",
-    //                     headers: {
-    //                         'Content-Type': 'application/json',
-    //                         'Accept': 'application/json'
-    //                     },
-    //                     body: JSON.stringify({
-    //                         body: messageBody,
-    //                         user_id: user,
-    //                         item_id: 1
-    //                     }) // end of body
-    //                 }) // end of Fetch
-    //                 .then(r => r.json())
-    //                 .then(newMsg => {
-    //                     console.log(newMsg)
-    //                 })
-    //         } // end of if
-
-
-    //     }) //end of messageInfo listener
-
-
-    // }) // end of messageDiv listener
-
-    // inboxContainer.addEventListener('click', e => {
-    //     if (e.target.id === 'message') {
-    //         fetch(messagesUrl)
-    //             .then(r => r.json())
-    //             .then(msgObjs => {
-    //                 messages = msgObjs
-    //                 // console.log(msgObjs);
-    //                 console.log(messages);
-    //                 console.log(userId)
-    //                 let userMsgs = messages.filter(msgObjs => msgObjs.user_id === userId)
-    //                 console.log(userMsgs)
-    //                 userMsg.forEach(msg => {
-    //                     inboxContainer.innerHTML = ''
-    //                     inboxContainer.innerHTML += `
-          
-
-    //     `
-    //                 })
-    //             }) // end of fetch Msgs
-
-    //     }
-
-
-    // }) // end of inbox listener
 
     logout.addEventListener('click', e => {
         if (e.target.innerText === 'Logout')
@@ -200,13 +100,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     browse.addEventListener('click', e => {
         if (e.target.innerText === 'Browse')
+        itemShow.innerHTML = ""
+        itemBox.innerHTML = ""
         closeNav()
         itemShow.innerHTML += `
         <ul>
         <button>Electronics</button>
         <button>Clothing</button>
         <button>Books</button>
-        <button>Video Games</button>
         <button>Records</button>
         </ul>
         `
