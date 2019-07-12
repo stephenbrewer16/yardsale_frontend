@@ -183,6 +183,36 @@ body {
   font-family: Tahoma, Geneva, sans-serif;
 }
 
+#item-info{
+  background-color: #A7E5A5;
+  list-style-type: none;
+  padding: 0;
+  border-radius: 3px;
+  color: #E8FCE5;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 12pt;
+}
+.info-row {
+  display: flex;
+  /* justify-content: flex-end; */
+  /* padding: .5em; */
+}
+.info-row > label {
+  padding: 0 0 0 0;
+}
+.info-row > input {
+  flex: 10;
+}
+.info-row > input,
+.info-row > button {
+  padding: 0;
+}
+.info-row > button {
+ background: gray;
+ color: white;
+ border: solid 1px;
+}
+
 #item-display p {
   font-size: 10pt;
 
@@ -199,6 +229,8 @@ body {
   border-radius: 3px;
   color: #E8FCE5;
   font-family: Tahoma, Geneva, sans-serif;
+  font-size: 10pt;
+  margin-right: 10px;
 
 }
 
