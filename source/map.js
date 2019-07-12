@@ -2,7 +2,6 @@
 
 const map = L.map('map').setView([40.7128, -74.0060], 13)
 const mapDiv = document.querySelector('#map')
-// debugger
 
 const mapWindow = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic21pdGhhbTUwIiwiYSI6ImNqeHZ4NWNxcjA5cGYzY29jZjBlNnFub2kifQ.s8Am01fhZoezrzcGmFV1SQ', {
     attribution: "Thank you, Mapbox!",
@@ -153,7 +152,6 @@ function postPin(newItem) {
             let messageBody = document.querySelector('.msg-body').value
             console.log(userId, messageBody);
             
-            debugger
             fetch(messagesUrl, {
                 method: "POST",
                 headers: {

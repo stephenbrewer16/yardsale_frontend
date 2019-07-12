@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(newUser => {
                 if (newUser.id) {
                     userId = newUser.id
-                    // debugger
                     localStorage.setItem("user", userId)
                     menuBtn.style.display = 'block'
                     userForm.style.display = 'none'
