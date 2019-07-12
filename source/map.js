@@ -40,8 +40,8 @@ fetchPins()
 function renderPins() {
     userArray.forEach(user => {
         let userCaption = ""
-        
-        if (user.items.length !== 0) {   
+
+        if (user.items.length !== 0) {
             user.items.forEach(item => {
                 userCaption += `<h5 id=${item.id} class="item-title">${item.title} $${item.price} \n </h5>`
             })
@@ -55,35 +55,40 @@ function renderPins() {
 //RENDER ITEMS ON MARKER CLICK
 const itemsURL = 'http://localhost:3000/api/v1/items'
 
-function renderItem(itemId) { 
+function renderItem(itemId) {
     fetch('http://localhost:3000/api/v1/items')
-    .then(resp => resp.json())
-    .then(items => {
-        items.forEach(item => {
-            if (item.id === parseInt(itemId)) {
-                itemDiv.innerHTML = ""
-                //Slap item to DOM
-                itemDiv.innerHTML += `
-                <h4>${item.title} $${item.price}</h4>
-                <h5>${item.category}</h5>
-                <p>${item.description}</p>
-                <div class='message-info'>
-                <input class='msg-body' type='textarea' name='body'>
-                <input data-id=${item.user.id} data-item=${item.id} id='send' type='submit' name='send' value='Message Seller'>
-                </div>
-                <div class='message-thread'>
-                </div>
+        .then(resp => resp.json())
+        .then(items => {
+            items.forEach(item => {
+                if (item.id === parseInt(itemId)) {
+                    itemDiv.innerHTML = ""
+                    //Slap item to DOM
+                    itemDiv.innerHTML += `
+                    <div id='item-info'>
+                    <h4 class='info-row'>${item.title} $${item.price}</h4>
+                    <h5 class='info-row'>${item.category}</h5>
+                    <p class='info-row'>${item.description}</p>
+                    <div class='message-info'>
+                        <input class='msg-body' type='textarea' name='body'>
+                        <br>
+                        <input data-id=${item.user.id} data-item=${item.id} id='send' type='submit' name='send' value='Message Seller'>
+                    </div>
+                    <div class='message-thread'>
+                    </div>
+                    <br>
+                    </div>
                 `
                 //LIST MESSAGES
-                
-                
-                item.messages.forEach(message => {
-                    itemDiv.querySelector('.message-thread').innerHTML += `
-                    <p><strong>${message.user.name}</strong>: ${message.body}</p>
-                    `
-                })
+
+
+                    item.messages.forEach(message => {
+                        itemDiv.querySelector('.message-thread').innerHTML += `
+                        <p><strong>${message.user.name}</strong>: ${message.body}</p>
+                        `
+                    })
+>>>>>>> style3
                 //END LIST MESSAGES
-                
+
             }
         })
     })//end fetch
@@ -128,7 +133,7 @@ itemForm.addEventListener('submit', (e) => {
 
 function postPin(newItem) {
     let userCaption = ""
-    
+
     userCaption = `<h5 id=${newItem.id} class="item-title">${newItem.title} $${newItem.price}</h5>`
     L.marker([newItem.user.lat, newItem.user.long])
     .bindPopup(userCaption)
@@ -136,22 +141,22 @@ function postPin(newItem) {
 
         map.panTo([newItem.user.lat, newItem.user.long])
     }
-    
-    
+
+
     //MESSAGE EVENT LISTENER
     const messageThread = document.querySelector('.message-thread')
     const messagesUrl = `http://localhost:3000/api/v1/messages`
-    
+
     itemDiv.addEventListener('click', e => {
         if (e.target.id === 'send') {
             let userId = localStorage.getItem("user")
-            
+
             const thisThread = e.target.parentElement.nextElementSibling
-            
-            
+
+
             let messageBody = document.querySelector('.msg-body').value
             console.log(userId, messageBody);
-            
+
             fetch(messagesUrl, {
                 method: "POST",
                 headers: {
@@ -172,17 +177,16 @@ function postPin(newItem) {
                 `
             })
         } // end of if
-        
-        
+
+
     }) //end of messageInfo listener
     //END MESSAGE EVENT LISTENER
-    
-    
+
+
     //ADD BROWSE EVENT LISTENER
-    
+
     itemBox.addEventListener('click', function(e) {
         renderItem(e.target.closest('div').dataset.id)
     })
-    
+
     //END BROWSE EVENT LISTENER
-    
