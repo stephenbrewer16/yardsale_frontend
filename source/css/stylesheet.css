@@ -11,6 +11,9 @@ body {
   }
 }
 
+
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -27,7 +30,7 @@ body {
     color: #A5E2A3;
     padding: 1em 1.5em;
     font-size: 16pt;
-    text-align: right;
+    text-align: left;
     /* margin-left: 40px; */
     text-decoration: none;
     text-transform: uppercase;
@@ -135,8 +138,7 @@ body {
     /* border: solid 1px; */
 }
 #item-show{
-    margin-left: 35%;
-    height: 75%;
+    height: 75%
 }
 #item-info {
     display: flex;
@@ -174,4 +176,49 @@ body {
   font-size: 34pt;
   color: #E8FCE5;
   font-family: Tahoma, Geneva, sans-serif;
+}
+
+#item-display{
+  color: #E8FCE5;
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+#item-display p {
+  font-size: 10pt;
+
+}
+
+#item-form h5{
+  color: #FF665B
+}
+
+#item-div{
+  background-color: #A7E5A5;
+  list-style-type: none;
+  padding: 0;
+  border-radius: 3px;
+  color: #E8FCE5;
+  font-family: Tahoma, Geneva, sans-serif;
+
+}
+
+.form-row {
+  display: flex;
+  justify-content: flex-end;
+  /* padding: .5em; */
+}
+.form-row > label {
+  padding: 0 0 0 0;
+}
+.form-row > input {
+  flex: 10;
+}
+.form-row > input,
+.form-row > button {
+  padding: 0;
+}
+.form-row > button {
+ background: gray;
+ color: white;
+ border: solid 1px;
 }
