@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     itemBox.innerHTML = "";
                     items.forEach(item => {
                         itemBox.innerHTML += `
+                        <div data-id=${item.id}>
                         <ul>
                         <b>${item.title}</b>
                         <ul>
@@ -130,6 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <b> Price: </b>$${item.price}
 
                         </ul>
+                        </div>
                         `
                     })
                 })
