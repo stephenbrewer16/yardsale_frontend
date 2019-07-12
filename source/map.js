@@ -2,6 +2,7 @@
 
 const map = L.map('map').setView([40.7128, -74.0060], 13)
 const mapDiv = document.querySelector('#map')
+let userId = localStorage.getItem("user")
 
 const mapWindow = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic21pdGhhbTUwIiwiYSI6ImNqeHZ4NWNxcjA5cGYzY29jZjBlNnFub2kifQ.s8Am01fhZoezrzcGmFV1SQ', {
     attribution: "Thank you, Mapbox!",
@@ -70,7 +71,6 @@ function renderItem(itemId) {
                     <p class='info-row'>${item.description}</p>
                     <div class='message-info'>
                         <input class='msg-body' type='textarea' name='body'>
-                        <br>
                         <input data-id=${item.user.id} data-item=${item.id} id='send' type='submit' name='send' value='Message Seller'>
                     </div>
                     <div class='message-thread'>
@@ -86,12 +86,11 @@ function renderItem(itemId) {
                         <p><strong>${message.user.name}</strong>: ${message.body}</p>
                         `
                     })
->>>>>>> style3
                 //END LIST MESSAGES
 
-            }
-        })
-    })//end fetch
+                }
+            })
+        })//end fetch
 }
 //END RENDER ITEMS
 
@@ -124,10 +123,10 @@ itemForm.addEventListener('submit', (e) => {
             user_id: userNum
         }) // end of body
     }) // end of Fetch
-    .then(r => r.json())
-    .then(newItem => {
-        postPin(newItem)
-    })
+        .then(r => r.json())
+        .then(newItem => {
+            postPin(newItem)
+        })
     itemBox.innerHTML = ""
 }) // end of itemDiv event listener
 
@@ -136,20 +135,19 @@ function postPin(newItem) {
 
     userCaption = `<h5 id=${newItem.id} class="item-title">${newItem.title} $${newItem.price}</h5>`
     L.marker([newItem.user.lat, newItem.user.long])
-    .bindPopup(userCaption)
+        .bindPopup(userCaption)
         .addTo(map)
 
-        map.panTo([newItem.user.lat, newItem.user.long])
-    }
+    map.panTo([newItem.user.lat, newItem.user.long])
+}
 
 
-    //MESSAGE EVENT LISTENER
-    const messageThread = document.querySelector('.message-thread')
-    const messagesUrl = `http://localhost:3000/api/v1/messages`
+//MESSAGE EVENT LISTENER
+const messageThread = document.querySelector('.message-thread')
+const messagesUrl = `http://localhost:3000/api/v1/messages`
 
-    itemDiv.addEventListener('click', e => {
+itemDiv.addEventListener('click', e => {
         if (e.target.id === 'send') {
-            let userId = localStorage.getItem("user")
 
             const thisThread = e.target.parentElement.nextElementSibling
 
@@ -169,24 +167,24 @@ function postPin(newItem) {
                     item_id: e.target.dataset.item,
                 }) // end of body
             }) // end of Fetch
-            .then(r => r.json())
-            .then(message => {
-                //NEEDS MESSAGE THREAD SPECIFIC TO ITEM
-                thisThread.innerHTML += `
-                <strong>${message.user.name}</strong>: ${message.body} \n
-                `
-            })
+                .then(r => r.json())
+                .then(message => {
+                 //NEEDS MESSAGE THREAD SPECIFIC TO ITEM
+                    thisThread.innerHTML += `
+                        <strong>${message.user.name}</strong>: ${message.body} \n
+                    `
+                })
         } // end of if
 
 
     }) //end of messageInfo listener
-    //END MESSAGE EVENT LISTENER
+//END MESSAGE EVENT LISTENER
 
 
-    //ADD BROWSE EVENT LISTENER
+//ADD BROWSE EVENT LISTENER
 
-    itemBox.addEventListener('click', function(e) {
-        renderItem(e.target.closest('div').dataset.id)
-    })
+itemBox.addEventListener('click', function(e) {
+    renderItem(e.target.closest('div').dataset.id)
+})
 
-    //END BROWSE EVENT LISTENER
+//END BROWSE EVENT LISTENER
