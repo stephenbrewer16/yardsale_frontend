@@ -63,13 +63,13 @@ document.addEventListener('DOMContentLoaded', () => {
          <ul>
              <form id="item-form" >
              Title:
-             <input type="text" name="title" >
+             <input class='form-row' type="text" name="title" >
              <br>
              Description:
-             <input type="text" name="description" >
+             <input class='form-row' type="text" name="description" >
              <br>
              Category:
-             <select name = "category" form = "item-info">
+             <select class='form-row' name = "category" form = "item-info">
 
                  <option value = "Clothing" > Clothing </option>
                  <option value = "Records" > Records </option>
@@ -77,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
                  <option value = "Electronics" > Electronics </option>
                  </select>
                  <br>
-             Price:
-             <input type="text" name="price" >
-             <input hidden type="text" value=${userId} >
+                 Price:
+             <input class='form-row'  type="text" name="price" >
+             <input hidden type="text" value=${userId} ><br>
              <input type="submit" name="submit" >
              </form>
         </div>
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }) //end itemBox listener
 
 
-    
+
 
     logout.addEventListener('click', e => {
         if (e.target.innerText === 'Logout')
