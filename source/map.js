@@ -177,3 +177,12 @@ debugger
 
     }) //end of messageInfo listener
 //END MESSAGE EVENT LISTENER
+
+
+//ADD BROWSE EVENT LISTENER
+
+itemBox.addEventListener('click', function(e) {
+    renderItem(e.target.closest('div').dataset.id)
+})
+
+//END BROWSE EVENT LISTENER
