@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(newUser => {
                 if (newUser.id) {
                     userId = newUser.id
+                    // debugger
                     localStorage.setItem("user", userId)
                     menuBtn.style.display = 'block'
                     userForm.style.display = 'none'
@@ -148,6 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
         map.style.display = 'none'
         itemShow.innerHTML = ""
         itemDis.innerHTML = ""
+        document.location.reload(true)
+        
     })
 }) // end of DOM load
 
