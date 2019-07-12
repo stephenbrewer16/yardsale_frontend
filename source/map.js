@@ -70,15 +70,17 @@ function renderItem(itemId) {
                     <p>${item.description}</p>
                     <div class='message-info'>
                         <input class='msg-body' type='textarea' name='body'>
-                        <input data-id=${item.user.id} id='send' type='submit' name='send' value='Message Seller'>
+                        <input data-id=${item.user.id} data-item=${item.id} id='send' type='submit' name='send' value='Message Seller'>
                     </div>
                     <div class='message-thread'>
                     </div>
                 `
                 //LIST MESSAGES
+                    
+
                     item.messages.forEach(message => {
                         itemDiv.querySelector('.message-thread').innerHTML += `
-                        <p><strong>${item.user.name}</strong>: ${message.body}</p>
+                        <p><strong>${message.user.name}</strong>: ${message.body}</p>
                         `
                     })
                 //END LIST MESSAGES
@@ -150,8 +152,7 @@ itemDiv.addEventListener('click', e => {
             let messageBody = document.querySelector('.msg-body').value
             console.log(userId, messageBody);
 
-            
-
+debugger
             fetch(messagesUrl, {
                 method: "POST",
                 headers: {
@@ -161,7 +162,7 @@ itemDiv.addEventListener('click', e => {
                 body: JSON.stringify({
                     body: messageBody,
                     user_id: parseInt(userId),
-                    item_id: e.target.dataset.id
+                    item_id: e.target.dataset.item,
                 }) // end of body
             }) // end of Fetch
                 .then(r => r.json())
