@@ -1,5 +1,5 @@
 body {
-     background: #8FC49E
+     background: #4bb7ec;
 }
 
 @keyframes moveRight {
@@ -25,9 +25,9 @@ body {
 
 
 #menuButton {
-    background-color: #E8FCE5;
+    background-color: #4BB7EC;
     box-shadow: 16px 10px 0px #FF665B;
-    color: #A5E2A3;
+    color: #ffffff;
     padding: 1em 1.5em;
     font-size: 16pt;
     text-align: left;
@@ -38,7 +38,7 @@ body {
 }
 
 #menuButton:hover {
-    background-color: #EEFFCE;
+    background-color: #2AB7CA;
     cursor: pointer;
 }
 
@@ -68,14 +68,14 @@ body {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 16px;
-    color: #E8FCE5;
+    color: #ffffff;
     display: block;
     transition: 0.3s;
 }
 
 
 .sidenav a:hover {
-    color: #D9E8BE;
+    color: #2AB7CA;
 }
 
 
@@ -174,21 +174,21 @@ body {
   animation-duration: 3s;
   text-align: center;
   font-size: 34pt;
-  color: #E8FCE5;
+  color: #ffffff;
   font-family: Tahoma, Geneva, sans-serif;
 }
 
 #item-display{
-  color: #E8FCE5;
+  color: #ffffff;
   font-family: Tahoma, Geneva, sans-serif;
 }
 
 #item-info{
-  background-color: #A7E5A5;
+  background-color: #4bb7ec;
   list-style-type: none;
   padding: 0;
   border-radius: 3px;
-  color: #E8FCE5;
+  color: #ffffff;
   font-family: Tahoma, Geneva, sans-serif;
   font-size: 12pt;
 }
@@ -223,11 +223,11 @@ body {
 }
 
 #item-div{
-  background-color: #A7E5A5;
+  background-color: #4bb7ec;
   list-style-type: none;
   padding: 0;
   border-radius: 3px;
-  color: #E8FCE5;
+  color: #ffffff;
   font-family: Tahoma, Geneva, sans-serif;
   font-size: 10pt;
   margin-right: 10px;

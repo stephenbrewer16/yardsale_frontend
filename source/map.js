@@ -88,6 +88,8 @@ function renderItem(itemId) {
                     })
                 //END LIST MESSAGES
 
+                    map.panTo([item.user.lat, item.user.long])
+
                 }
             })
         })//end fetch

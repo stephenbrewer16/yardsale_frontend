@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     itemBox.style.display = 'block'
                     itemShow.style.display = 'block'
+                    document.body.style.backgroundColor = "white"
                 }
             })
     }) // end of userForm listener
