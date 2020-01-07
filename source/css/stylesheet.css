@@ -1,5 +1,5 @@
 body {
-     background: #8FC49E
+     background: #EEE82C
 }
 
 @keyframes moveRight {
@@ -132,11 +132,14 @@ body {
 }
 
 #item-div {
+
     width: 25%;
     height: 25%
     /* display:flex; */
     /* border: solid 1px; */
 }
+
+
 #item-show{
     height: 75%
 }
@@ -232,6 +235,10 @@ body {
   font-size: 10pt;
   margin-right: 10px;
 
+}
+
+.form-row:hover{
+  background-color: #EEFFCE;
 }
 
 .form-row {
